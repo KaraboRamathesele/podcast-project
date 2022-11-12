@@ -2,7 +2,7 @@ import {
   html,
   LitElement,
 } from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js";
-import { store } from "../store.js";
+import { connect } from "../store.js";
 
 class Component extends LitElement {
   static get properties() {
@@ -23,25 +23,6 @@ class Component extends LitElement {
   disconnectedCallback() {
     this.disconnectStore();
   }
-
-  //   constructor() {
-  //     super();
-
-  //     const state = store.subscribe(this.storeChange);
-  //     this.storeChange(state);
-  //   }
-
-  //   /**
-  //    * @param {import('../types').state} state
-  //    */
-  //   storeChange = (state) => {
-  //     if (this.phase === state.phase) return;
-  //     this.phase = state.phase;
-  //   };
-
-  //   disconnectedCallback() {
-  //     store.unsubscribe(this.storeChange);
-  //   }
 
   render() {
     switch (this.phase) {
@@ -64,3 +45,22 @@ class Component extends LitElement {
 }
 
 customElements.define("podcast-app", Component);
+
+//   constructor() {
+//     super();
+
+//     const state = store.subscribe(this.storeChange);
+//     this.storeChange(state);
+//   }
+
+//   /**
+//    * @param {import('../types').state} state
+//    */
+//   storeChange = (state) => {
+//     if (this.phase === state.phase) return;
+//     this.phase = state.phase;
+//   };
+
+//   disconnectedCallback() {
+//     store.unsubscribe(this.storeChange);
+//   }
