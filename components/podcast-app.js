@@ -13,21 +13,35 @@ class Component extends LitElement {
 
   constructor() {
     super();
-    const state = store.subscribe(this.storeChange);
-    this.storeChange(state);
-  }
 
-  /**
-   * @param {import('../types').state} state
-   */
-  storeChange = (state) => {
-    if (this.phase === state.phase) return;
-    this.phase = state.phase;
-  };
+    this.disconnectStore = connect((state) => {
+      if (this.phase === state.phase) return;
+      this.phase = state.phase;
+    });
+  }
 
   disconnectedCallback() {
-    store.unsubscribe(this.storeChange);
+    this.disconnectStore();
   }
+
+  //   constructor() {
+  //     super();
+
+  //     const state = store.subscribe(this.storeChange);
+  //     this.storeChange(state);
+  //   }
+
+  //   /**
+  //    * @param {import('../types').state} state
+  //    */
+  //   storeChange = (state) => {
+  //     if (this.phase === state.phase) return;
+  //     this.phase = state.phase;
+  //   };
+
+  //   disconnectedCallback() {
+  //     store.unsubscribe(this.storeChange);
+  //   }
 
   render() {
     switch (this.phase) {
