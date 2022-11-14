@@ -4,6 +4,7 @@ import {
   css,
 } from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js";
 import { store, connect } from "../store.js";
+import { addPodcastEpisode } from "../watchlist.js";
 
 class Component extends LitElement {
   static get properties() {
@@ -30,6 +31,21 @@ class Component extends LitElement {
     this.disconnectStore();
   }
 
+  static styles = css`
+    :host {
+      display: block;
+      padding: 12px;
+    }
+
+    .search {
+      color: rgba(102, 188, 145, 0.8);
+    }
+
+    .watchlist-icon {
+      cursor: pointer;
+    }
+  `;
+
   render() {
     const changeHandler = (event) => {
       store.changeSorting(event.target.value);
@@ -42,11 +58,11 @@ class Component extends LitElement {
     return html`
       <div>
         <label>
-          <span>Search</span>
+          <span class="search">Search</span>
           <input @input="${inputHandler}" value="${this.search}" />
         </label>
         <label>
-          Sorting
+          <span style="font-weight:bold;">Sorting</span>
           <select @change="${changeHandler}">
             <option value="a-z" .selected="${this.sorting === "a-z"}">
               A - Z
@@ -69,6 +85,15 @@ class Component extends LitElement {
           </select>
         </label>
       </div>
+
+      <p>
+        WatchList
+        <span
+          style="border: 3px solid #E68816; border-radius: 20px; font-size: 20px;"
+          class="watchlist-icon"
+          >+</span
+        >
+      </p>
     `;
   }
 }
