@@ -1,7 +1,7 @@
 import {
   html,
-  LitElement,
   css,
+  LitElement,
 } from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js";
 import { store, connect } from "../store.js";
 
@@ -26,6 +26,7 @@ class Component extends LitElement {
       previews: { state: true },
       sorting: { state: true },
       search: { state: true },
+      image: { state: true },
     };
   }
 
@@ -50,8 +51,81 @@ class Component extends LitElement {
   }
 
   static styles = css`
+    :host {
+      display: block;
+      padding: 30px;
+      background-color: whitesmoke;
+    }
+
     li {
       border: 1px solid var(--primary-blue);
+      list-style-type: none;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .btn {
+      appearance: none;
+      background-color: #fafbfc;
+      border: 1px solid rgba(27, 31, 35, 0.15);
+      border-radius: 6px;
+      box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+        rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+      box-sizing: border-box;
+      color: #24292e;
+      cursor: pointer;
+      display: inline-block;
+      font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+        sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      list-style: none;
+      padding: 6px 16px;
+      position: relative;
+      transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: middle;
+      white-space: nowrap;
+      word-wrap: break-word;
+    }
+
+    .btn:hover {
+      background-color: #f3f4f6;
+      text-decoration: none;
+      transition-duration: 0.1s;
+    }
+
+    .btn:disabled {
+      background-color: #fafbfc;
+      border-color: rgba(27, 31, 35, 0.15);
+      color: #959da5;
+      cursor: default;
+    }
+
+    .btn:active {
+      background-color: #edeff2;
+      box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+      transition: none 0s;
+    }
+
+    .btn:focus {
+      outline: 1px transparent;
+    }
+
+    .btn:before {
+      display: none;
+    }
+
+    .btn:-webkit-details-marker {
+      display: none;
     }
   `;
 
@@ -79,31 +153,37 @@ class Component extends LitElement {
       throw new Error("Invalid sorting");
     });
 
-    const list = sortedPreviews.map(({ title, id, updated }) => {
+    // const backHandler = () => store.loadList()
+
+    const list = sortedPreviews.map(({ title, id, updated, image }) => {
+      // image
       const date = new Date(updated);
       const day = date.getDate();
       const month = MONTHS[date.getMonth() - 1];
       const year = date.getFullYear();
 
       const clickHandler = () => store.loadSingle(id);
-      const clickHandler2 = () => store.loadSeasons(id);
 
       return html`
         <li>
-          <button @click="${clickHandler}">${title}</button>
+          <button class="btn" role="button" @click="${clickHandler}">
+            ${title}
+          </button>
           <div>Updated: ${day} ${month} ${year}</div>
         </li>
       `;
     });
 
     return html`
-      <h1>Podcast List</h1>
+      <h1>Podcast App</h1>
       <podcast-controls></podcast-controls>
-      ${list.length > 0
-        ? html`<ul>
-            ${list}
-          </ul>`
-        : html`<div>No matches</div>`}
+      <div class="container">
+        ${list.length > 0
+          ? html`<ul>
+              ${list}
+            </ul>`
+          : html`<div>No matches</div>`}
+      </div>
     `;
   }
 }

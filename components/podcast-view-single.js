@@ -30,8 +30,10 @@ class Component extends LitElement {
       color: purple;
     }
     img {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
     }
   `;
 
@@ -69,6 +71,7 @@ class Component extends LitElement {
 
     return html`
       <button @click="${backHandler}">👈 BACK</button>
+      <podcast-episode></podcast-episode>
       <h1>${show.title || ""}</h1>
       <img src="${show.image}" />
       ${seasons}

@@ -45,22 +45,3 @@ class Component extends LitElement {
 }
 
 customElements.define("podcast-app", Component);
-
-//   constructor() {
-//     super();
-
-//     const state = store.subscribe(this.storeChange);
-//     this.storeChange(state);
-//   }
-
-//   /**
-//    * @param {import('../types').state} state
-//    */
-//   storeChange = (state) => {
-//     if (this.phase === state.phase) return;
-//     this.phase = state.phase;
-//   };
-
-//   disconnectedCallback() {
-//     store.unsubscribe(this.storeChange);
-//   }
