@@ -55,30 +55,6 @@ class Component extends LitElement {
     }
   `;
 
-  // constructor() {
-  //   super();
-  //   const state = store.subscribe(this.storeChange);
-  //   this.storeChange(state);
-  // }
-
-  // /**
-  //  * @param {import('../types').state} state
-  //  */
-  // storeChange = (state) => {
-  //   if (this.previews === state.previews) return;
-  //   this.previews = state.previews;
-  // };
-
-  // disconnectedCallback() {
-  //   store.unsubscribe(this.storeChange);
-  // }
-
-  // static styles = css`
-  //   li {
-  //     border: 1px solid var(--primary-blue);
-  //   }
-  // `;
-
   render() {
     /**
      * @type {import('../types').preview[]}
@@ -110,6 +86,7 @@ class Component extends LitElement {
       const year = date.getFullYear();
 
       const clickHandler = () => store.loadSingle(id);
+      const clickHandler2 = () => store.loadSeasons(id);
 
       return html`
         <li>
