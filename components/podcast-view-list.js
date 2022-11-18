@@ -175,7 +175,7 @@ class Component extends LitElement {
     });
 
     return html`
-      <h1>Podcast App</h1>
+      <h1>Podcast App (remove)</h1>
       <podcast-controls></podcast-controls>
       <div class="container">
         ${list.length > 0
