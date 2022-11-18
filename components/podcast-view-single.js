@@ -70,7 +70,7 @@ class Component extends LitElement {
     });
 
     return html`
-      <button @click="${backHandler}">👈 BACK</button>
+      <button @click="${backHandler}" class="">👈 BACK</button>
       <podcast-episode></podcast-episode>
       <h1>${show.title || ""}</h1>
       <img src="${show.image}" />
