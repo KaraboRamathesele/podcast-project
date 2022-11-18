@@ -85,15 +85,6 @@ class Component extends LitElement {
           </select>
         </label>
       </div>
-
-      <p>
-        WatchList
-        <span
-          style="border: 3px solid #E68816; border-radius: 20px; font-size: 20px;"
-          class="watchlist-icon"
-          >+</span
-        >
-      </p>
     `;
   }
 }

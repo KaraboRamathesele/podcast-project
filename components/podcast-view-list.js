@@ -54,7 +54,7 @@ class Component extends LitElement {
     :host {
       display: block;
       padding: 30px;
-      background-color: whitesmoke;
+      background-color: #0c003d;
     }
 
     li {
