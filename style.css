@@ -362,11 +362,6 @@ header .container {
      align-items: center;
      gap: 25px;
    }
- 
-
-   /* PODCAST
-   */
-
   
 
 
@@ -452,7 +447,7 @@ header .container {
      */
   
     .hero-content {
-      max-width: 680px;
+      max-width: 500px;
       margin-inline: auto;
     }
   
