@@ -18,8 +18,8 @@ class Component extends LitElement {
     this.disconnectStore = connect((state) => {
       if (this.single === state.single) return;
       this.single = state.single;
-      if (this.seasons === state.seasons) return;
-      this.seasons = state.seasons;
+      // if (this.seasons === state.seasons) return;
+      // this.seasons = state.seasons;
       // if (this.previews !== state.previews) {
       //   this.previews = state.previews;
       // }
@@ -37,8 +37,6 @@ class Component extends LitElement {
     img {
       width: 110px;
       height: 100px;
-      display: flex;
-      justify-content: center;
     }
   `;
 
@@ -64,6 +62,7 @@ class Component extends LitElement {
                 <audio controls>
                   <source src="${file}" type="audio/mp3" />
                 </audio>
+                <button>Favorite ❤️</button>
               </div>
             `;
           })}
