@@ -21,7 +21,7 @@ class Store {
 
   async loadList() {
     // this loadlist back to the view ? MV-because of this ?C
-    console.log("Here");
+    // console.log("Here");
     if (this.state.previews.length > 0) {
       return this.update({
         single: null,
@@ -95,7 +95,7 @@ class Store {
 
     return this.update({
       phase: "seasons", //change this from single --> seasons
-      single: data,
+      seasons: data,
     });
   }
 
