@@ -27,14 +27,14 @@ class Component extends LitElement {
       sorting: { state: true },
       search: { state: true },
       image: { state: true },
-      key: { type: String },
-      
-      label: { type: String },
-      seasons: { type: Number },
-      description: { type: String},
-      genres: { type: [String] },
-      lastUpdated: { type: String },
-      sortKey: {type: String }
+      // key: { type: String },
+
+      // label: { type: String },
+      // seasons: { type: Number },
+      // description: { type: String },
+      // genres: { type: [String] },
+      // lastUpdated: { type: String },
+      // sortKey: { type: String },
     };
   }
 
@@ -157,7 +157,7 @@ class Component extends LitElement {
         const theGenres = genres;
 
         const clickHandler = () => store.loadSingle(id);
-        // const clickHandler1 = () => store.loadSeasons(id);
+        const clickHandler0 = () => store.loadSeasons(id);
 
         return html`
           <div class="podcast-list">
@@ -170,15 +170,15 @@ class Component extends LitElement {
                 src="${image}"
                 width="400"
                 height="400"
-                @click="${clickHandler}"
+                @click="${clickHandler0}"
               />
             </figure>
             <div class="card-content">
               <div class="card-meta">Updated: ${day} ${month} ${year}</div>
             </div>
             <div class="card-content">
-            <div class="card-meta">Genres: ${theGenres}</div>
-          </div>
+              <div class="card-meta">Genres: ${theGenres}</div>
+            </div>
           </div>
         `;
       }

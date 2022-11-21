@@ -8,7 +8,7 @@ import { store, connect } from "../store.js";
 class Component extends LitElement {
   static get properties() {
     return {
-      single: { state: true },
+      seasons: { state: true },
     };
   }
 
@@ -16,13 +16,8 @@ class Component extends LitElement {
     super();
 
     this.disconnectStore = connect((state) => {
-      if (this.single === state.single) return;
-      this.single = state.single;
       if (this.seasons === state.seasons) return;
       this.seasons = state.seasons;
-      // if (this.previews !== state.previews) {
-      //   this.previews = state.previews;
-      // }
     });
   }
 
@@ -30,39 +25,42 @@ class Component extends LitElement {
     this.disconnectStore();
   }
 
-  static styles = css`
-    h1 {
-      color: #00f9ef;
-    }
-    img {
-      width: 110px;
-      height: 100px;
-      display: flex;
-      justify-content: center;
-    }
-  `;
+  static styles = css``;
 
   render() {
     /**
      * @type {import('../types').show}
      */
-    const show = this.single;
+    const show = this.seasons;
     if (!show) {
       return html`<div></div>`;
     }
 
     const backHandler = () => store.loadList();
 
-    const seasons = show.seasons.map(({ episodes, title }) => {
+    const season = show.seasons.map(({ id, title, episodes, image }) => {
+      const clickHandler = () => store.loadSingle(id);
+
       return html`
         <div>
           <strong>${title}</strong>
+          <img
+            src="${image}"
+            width="300"
+            height="300"
+            @click="${clickHandler}"
+          />
+        </div>
+        <div>
           ${episodes.map(({ file, title: innerTitle }) => {
             return html`
               <div>
                 <div>${innerTitle}</div>
                 <audio controls>
-                  <source src="${file}" type="audio/mp3" />
+                  <source
+                    src="https://file-examples.com/storage/fe8c7eef0c6364f6c9504cc/2017/11/file_example_MP3_700KB.mp3"
+                    type="audio/mp3"
+                  />
                 </audio>
               </div>
             `;
@@ -72,12 +70,10 @@ class Component extends LitElement {
     });
 
     return html`
-      <button @click="${backHandler}" class="">👈 BACK</button>
+      <button @click="${backHandler}">👈 BACK</button>
       <h1>${show.title || ""}</h1>
-      <img src="${show.image}" />
-      ${seasons}
+      <div>${season}</div>
     `;
   }
 }
-
-customElements.define("podcast-view-single", Component);
+customElements.define("podcast-seasons", Component);
