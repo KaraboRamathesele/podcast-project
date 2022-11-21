@@ -25,8 +25,6 @@ class Component extends LitElement {
     this.disconnectStore();
   }
 
-  static styles = css``;
-
   render() {
     /**
      * @type {import('../types').show}
@@ -40,14 +38,15 @@ class Component extends LitElement {
 
     const season = show.seasons.map(({ title, episodes, image, id }) => {
       const clickHandler = () => store.loadSingle(id);
+      // const clickHandler = () => store.loadSeasons(id);
 
       return html`
         <div>
           <strong>${title}</strong>
           <img
             src="${image}"
-            width="300"
-            height="300"
+            width="300px"
+            height="300px"
             @click="${clickHandler}"
           />
         </div>
@@ -59,6 +58,7 @@ class Component extends LitElement {
                 <audio controls>
                   <source src="${audio}" type="audio/mp3" />
                 </audio>
+                <a>Favorite ❤️</a>
               </div>
             `;
           })}
@@ -69,7 +69,7 @@ class Component extends LitElement {
     return html`
       <button @click="${backHandler}">👈 BACK</button>
       <h1>${show.title || ""}</h1>
-      <div>${seasons}</div>
+      <div>${season}</div>
     `;
   }
 }

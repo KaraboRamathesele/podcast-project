@@ -1,7 +1,6 @@
 import {
   LitElement,
   html,
-  css,
 } from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js";
 import { connect } from "../store.js";
 
@@ -28,7 +27,7 @@ class Component extends LitElement {
   render() {
     switch (this.phase) {
       case "loading":
-        return html`<div>Loading...</div>`;
+        return html`<div>LOADING...</div>`;
 
       case "error":
         return html`<div>Something went wrong!</div>`;

@@ -367,7 +367,7 @@ header .container {
    /* PODCAST
    */
 
-  .podcast-list { grid-template-columns: 1fr 1fr; }
+  
 
 
   @media (min-width: 1024px) {
@@ -458,10 +458,7 @@ header .container {
   
   
   
-    /* PODCAST
-     */
-  
-    .podcast-list { grid-template-columns: repeat(3, 1fr); }  
+
 
   }
 }

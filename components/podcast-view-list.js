@@ -62,6 +62,7 @@ class Component extends LitElement {
     this.disconnectStore();
   }
 
+  //styling
   static styles = css`
     :host {
       display: block;
@@ -118,6 +119,7 @@ class Component extends LitElement {
     .podcast-list {
       display: grid;
       gap: 30px;
+      grid-template-columns: 1fr 1fr; //grid-template-columns: repeat(3, 1fr);
     }
   `;
 
