@@ -31,13 +31,13 @@ export type show = {
 }
 
 export type phase = 'loading' | 'list' | 'single' | 'error' | 'seasons'
-export type sorting = 'a-z' | 'z-a' | 'oldest-latest' | 'latest-oldest'
+// export type sorting = 'a-z' | 'z-a' | 'oldest-latest' | 'latest-oldest'
 
 export type state = {
     phase: phase
     previews: preview[]
     single: null | show
-    sorting: sorting
+    // sorting: sorting
     search: string
     seasons: season[]
 }

@@ -94,7 +94,7 @@ class Store {
     const data = await response.json();
 
     return this.update({
-      phase: "single",
+      phase: "seasons", //change this from single --> seasons
       single: data,
     });
   }
@@ -152,6 +152,7 @@ class Store {
       previews: [],
       single: null,
       sorting: "a-z",
+      seasons: [],
     };
 
     this.loadList();

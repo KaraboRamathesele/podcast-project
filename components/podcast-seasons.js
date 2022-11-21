@@ -38,7 +38,7 @@ class Component extends LitElement {
 
     const backHandler = () => store.loadList();
 
-    const season = show.seasons.map(({ id, title, episodes, image }) => {
+    const season = show.seasons.map(({ title, episodes, image, id }) => {
       const clickHandler = () => store.loadSingle(id);
 
       return html`
@@ -57,10 +57,7 @@ class Component extends LitElement {
               <div>
                 <div>${innerTitle}</div>
                 <audio controls>
-                  <source
-                    src="https://file-examples.com/storage/fe8c7eef0c6364f6c9504cc/2017/11/file_example_MP3_700KB.mp3"
-                    type="audio/mp3"
-                  />
+                  <source src="${audio}" type="audio/mp3" />
                 </audio>
               </div>
             `;
