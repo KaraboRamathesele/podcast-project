@@ -26,7 +26,7 @@ class Component extends LitElement {
       previews: { state: true },
       sorting: { state: true },
       search: { state: true },
-      image: { state: true },
+      // image: { state: true },
       // key: { type: String },
 
       // label: { type: String },
@@ -52,9 +52,9 @@ class Component extends LitElement {
       if (this.search !== state.search) {
         this.search = state.search;
       }
-      if (this.image !== state.image) {
-        this.image = state.image;
-      }
+      // if (this.image !== state.image) {
+      //   this.image = state.image;
+      // }
     });
   }
 
@@ -119,7 +119,6 @@ class Component extends LitElement {
     .podcast-list {
       display: grid;
       gap: 30px;
-      grid-template-columns: 1fr 1fr; //grid-template-columns: repeat(3, 1fr);
     }
   `;
 

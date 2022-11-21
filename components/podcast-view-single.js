@@ -55,12 +55,12 @@ class Component extends LitElement {
       return html`
         <div>
           <strong>${title}</strong>
-          ${episodes.map(({ file, title: innerTitle }) => {
+          ${episodes.map(({ audio, title: innerTitle }) => {
             return html`
               <div>
                 <div>${innerTitle}</div>
                 <audio controls>
-                  <source src="${file}" type="audio/mp3" />
+                  <source src="${audio}" type="audio/mp3" />
                 </audio>
                 <button>Favorite ❤️</button>
               </div>
