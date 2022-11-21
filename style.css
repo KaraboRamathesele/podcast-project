@@ -70,7 +70,6 @@ input {
 
 html {
   font-family: var(--ff-josefin);
-  scroll-behavior: smooth;
 }
 
 body {
@@ -89,32 +88,6 @@ body {
 
 ::-webkit-scrollbar-thumb:hover { background: hsla(0, 0%, 100%, 0.6); }
 
-.btn {
-  color: var(--white);
-  font-size: var(--fs-4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  padding: 9px 10px;
-  border-radius: 4px;
-}
-
-.btn-primary {
-  background: var(--gradient);
-  background-size: 500%;
-  background-position: right;
-  padding: 15px 25px;
-  gap: 8px;
-  transition: background var(--transition);
-}
-
-.btn-primary:is(:hover, :focus) { background-position: left; }
-
-.btn-primary > ion-icon { font-size: 18px; }
-
-.btn-primary > span { margin-top: 3px; }
-
 .container { padding: 0 15px; }
 
 .h3 {
@@ -123,13 +96,7 @@ body {
   line-height: 1.5;
 }
 
-
-
-
-
-/*-----------------------------------*\
-  #HEADER
-\*-----------------------------------*/
+/* Header */
 
 header {
   position: fixed;
@@ -222,18 +189,6 @@ header .container {
 .navbar-btn:is(:hover, :focus),
 .navbar-actions .btn:is(:hover, :focus) { background: hsla(0, 0%, 100%, 0.1); }
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  transition: var(--transition);
-}
-
-.overlay.active {
-  pointer-events: all;
-  background: hsla(0, 0%, 0%, 0.7);
-}
 
 /* Heto */
 
@@ -285,10 +240,7 @@ header .container {
 
 .podcast { padding: var(--section-padding) 0; }
 
-.podcast-list {
-  display: grid;
-  gap: 30px;
-}
+
 
 .podcast-card { border-radius: 4px; }
 
@@ -355,46 +307,6 @@ header .container {
   background: var(--heliotrope-gray);
 }
 
-.podcast-card .card-title {
-  display: inline;
-  padding: 3px 0;
-  background: var(--gradient);
-  background-position: 0 95%;
-  background-repeat: no-repeat;
-  background-size: 0 2px;
-  transition: var(--transition);
-}
-
-.podcast-card:is(:hover, :focus) .card-title { background-size: 100% 2px; }
-
-
-/* Go Back to Top */
-
-.go-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  background: var(--blue-ryb);
-  color: var(--white);
-  font-size: 25px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.5);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--transition);
-  z-index: 2;
-}
-
-.go-top.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.go-top:is(:hover, :focus) { --blue-ryb: hsl(221, 100%, 40%); }
 
 
 /* Responsive */
@@ -468,9 +380,7 @@ header .container {
   
   
   
-    /**
-     * HEADER
-     */
+    /*HEADER */
   
     header { top: -120px; }
   
@@ -534,7 +444,6 @@ header .container {
     .navbar-actions .btn:is(:hover, :focus) { background: hsl(221, 100%, 40%); }
   
     .navbar::before,
-    .overlay { display: none; }
   
   
   
