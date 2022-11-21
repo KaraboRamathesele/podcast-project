@@ -30,7 +30,7 @@ export type show = {
     updated: string
 }
 
-export type phase = 'loading' | 'list' | 'single' | 'error'
+export type phase = 'loading' | 'list' | 'single' | 'error' | 'seasons'
 export type sorting = 'a-z' | 'z-a' | 'oldest-latest' | 'latest-oldest'
 
 export type state = {
@@ -39,6 +39,7 @@ export type state = {
     single: null | show
     sorting: sorting
     search: string
+    seasons: season[]
 }
 
 export type subscription = (state: state) => void
