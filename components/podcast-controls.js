@@ -33,16 +33,33 @@ class Component extends LitElement {
 
   static styles = css`
     :host {
-      display: block;
-      padding: 12px;
+      display: flex;
+      justify-content: space-around;
+      padding: 1rem 0.5rem 2rem;
+      gap: 0.5rem;
+    }
+
+    input {
+      width: 15rem;
+      padding: 0.75rem;
+      border-radius: 0.25rem;
+      border: 1px solid #fff;
+      outline: none;
+      font-size: 1.05rem;
     }
 
     .search {
-      color: rgba(102, 188, 145, 0.8);
+      color: #fff;
+      font-size: 1.05rem;
     }
 
-    .watchlist-icon {
-      cursor: pointer;
+    select {
+      width: 15rem;
+      padding: 0.75rem;
+      border-radius: 0.25rem;
+      border: 1px solid #fff;
+      outline: none;
+      font-size: 1.05rem;
     }
   `;
 

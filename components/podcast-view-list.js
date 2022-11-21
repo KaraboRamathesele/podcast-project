@@ -107,31 +107,6 @@ class Component extends LitElement {
       transition-duration: 0.1s;
     }
 
-    .btn:disabled {
-      background-color: #fafbfc;
-      border-color: rgba(27, 31, 35, 0.15);
-      color: #959da5;
-      cursor: default;
-    }
-
-    .btn:active {
-      background-color: #edeff2;
-      box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-      transition: none 0s;
-    }
-
-    .btn:focus {
-      outline: 1px transparent;
-    }
-
-    .btn:before {
-      display: none;
-    }
-
-    .btn:-webkit-details-marker {
-      display: none;
-    }
-
     .podcast-list {
       display: grid;
       gap: 30px;
@@ -173,22 +148,25 @@ class Component extends LitElement {
         const year = date.getFullYear();
 
         const clickHandler = () => store.loadSingle(id);
-        const clickHandler1 = () => store.loadSeasons(id);
+        // const clickHandler1 = () => store.loadSeasons(id);
 
         return html`
-          <div class="ds-i">
+          <div class="podcast-list">
             <h2>${title}</h2>
             <button>
               <h3 @click="${clickHandler}">Seasons: ${seasons}</h3>
             </button>
-            <img
-              src="${image}"
-              width="400"
-              height="400"
-              @click="${clickHandler1}"
-            />
-            <div>Updated: ${day} ${month} ${year}</div>
-            <p class="genre">Genres: ${genres}</p>
+            <figure class="card-banner">
+              <img
+                src="${image}"
+                width="400"
+                height="400"
+                @click="${clickHandler}"
+              />
+            </figure>
+            <div class="card-content">
+              <div class="card-meta">Updated: ${day} ${month} ${year}</div>
+            </div>
           </div>
         `;
       }

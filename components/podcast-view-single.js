@@ -18,7 +18,6 @@ class Component extends LitElement {
     this.disconnectStore = connect((state) => {
       if (this.single === state.single) return;
       this.single = state.single;
-      // if (this.season?.toString() === state.season?.toString()) return;
       // this.season = state.season;
       // if (this.previews !== state.previews) {
       //   this.previews = state.previews;
@@ -75,29 +74,28 @@ class Component extends LitElement {
       `;
     });
 
-    const previews = this.previews;
+    // const previews = this.previews;
 
-    const filteredPreviews = previews.filter((item) => {
-      if (!this.search) return true;
-      return item.title.toLowerCase().includes(this.search.toLowerCase());
-    });
+    // const filteredPreviews = previews.filter((item) => {
+    //   if (!this.search) return true;
+    //   return item.title.toLowerCase().includes(this.search.toLowerCase());
+    // });
 
-    const sortedPreviews = filteredPreviews.sort((a, b) => {
-      if (this.sorting === "a-z") return a.title.localeCompare(b.title);
-      if (this.sorting === "z-a") return b.title.localeCompare(a.title);
+    // const sortedPreviews = filteredPreviews.sort((a, b) => {
+    //   if (this.sorting === "a-z") return a.title.localeCompare(b.title);
+    //   if (this.sorting === "z-a") return b.title.localeCompare(a.title);
 
-      const dateA = new Date(a.updated).getTime();
-      const dateB = new Date(b.updated).getTime();
+    //   const dateA = new Date(a.updated).getTime();
+    //   const dateB = new Date(b.updated).getTime();
 
-      if (this.sorting === "oldest-latest") return dateA - dateB;
-      if (this.sorting === "latest-oldest") return dateB - dateA;
+    //   if (this.sorting === "oldest-latest") return dateA - dateB;
+    //   if (this.sorting === "latest-oldest") return dateB - dateA;
 
-      throw new Error("Invalid sorting");
-    });
+    //   throw new Error("Invalid sorting");
+    // });
 
     return html`
       <button @click="${backHandler}" class="">👈 BACK</button>
-      <a> Favorites ❤️</a>
       <podcast-episode></podcast-episode>
       <h1>${show.title || ""}</h1>
       <img src="${show.image}" />
