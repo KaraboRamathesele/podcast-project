@@ -72,6 +72,33 @@ class Store {
     });
   }
 
+  //
+
+  /**
+   * @param {string} id
+   */
+  async loadSingle(id) {
+    this.update({
+      phase: "loading",
+    });
+
+    if (!id) throw new Error('"id" is required');
+    const response = await fetch(`https://podcast-api.netlify.app/id/${id}`);
+
+    if (!response.ok) {
+      return this.update({
+        phase: "error",
+      });
+    }
+
+    const data = await response.json();
+
+    return this.update({
+      phase: "single",
+      single: data,
+    });
+  }
+
   /**
    * @param {Partial<import('./types').state>} newState
    */
