@@ -36,12 +36,16 @@ class Component extends LitElement {
     this.disconnectStore = connect((state) => {
       if (this.previews !== state.previews) {
         this.previews = state.previews;
+        // return;
       }
       if (this.sorting !== state.sorting) {
         this.sorting = state.sorting;
       }
       if (this.search !== state.search) {
         this.search = state.search;
+      }
+      if (this.image !== state.image) {
+        this.image = state.image;
       }
     });
   }
@@ -127,6 +131,11 @@ class Component extends LitElement {
     .btn:-webkit-details-marker {
       display: none;
     }
+
+    .podcast-list {
+      display: grid;
+      gap: 30px;
+    }
   `;
 
   render() {
@@ -155,27 +164,40 @@ class Component extends LitElement {
 
     // const backHandler = () => store.loadList()
 
-    const list = sortedPreviews.map(({ title, id, updated, image }) => {
-      // image
-      const date = new Date(updated);
-      const day = date.getDate();
-      const month = MONTHS[date.getMonth() - 1];
-      const year = date.getFullYear();
+    const list = sortedPreviews.map(
+      ({ title, id, updated, image, genres, seasons }) => {
+        // image
+        const date = new Date(updated);
+        const day = date.getDate();
+        const month = MONTHS[date.getMonth() - 1];
+        const year = date.getFullYear();
 
-      const clickHandler = () => store.loadSingle(id);
+        const clickHandler = () => store.loadSingle(id);
+        const clickHandler1 = () => store.loadSeasons(id);
 
-      return html`
-        <li>
-          <button class="btn" role="button" @click="${clickHandler}">
-            ${title}
-          </button>
-          <div>Updated: ${day} ${month} ${year}</div>
-        </li>
-      `;
-    });
+        return html`
+          <div class="ds-i">
+            <h2>${title}</h2>
+            <button>
+              <h3 @click="${clickHandler}">Seasons: ${seasons}</h3>
+            </button>
+            <img
+              src="${image}"
+              width="400"
+              height="400"
+              @click="${clickHandler1}"
+            />
+            <div>Updated: ${day} ${month} ${year}</div>
+            <p class="genre">Genres: ${genres}</p>
+          </div>
+        `;
+      }
+    );
 
     return html`
-      <h1>Podcast App (remove)</h1>
+      <div class="hero-content">
+        <img src="./images/hero-title.png" alt="Podcast" class="hero-title" />
+      </div>
       <podcast-controls></podcast-controls>
       <div class="container">
         ${list.length > 0
