@@ -20,6 +20,7 @@ class Store {
   }
 
   async loadList() {
+    console.log("Here");
     if (this.state.previews.length > 0) {
       return this.update({
         single: null,

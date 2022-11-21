@@ -76,10 +76,7 @@ class Episode extends LitElement {
           <button id="play" @click="${this.playPodcastEpisode}">Play</button>
           <button
             id="play-podcast"
-            @click="${this.isFavourite
-              ? this.removePodcastEpisode
-              : this.savePodcastEpisode}"
-          >
+            @click="${this.isFavourite ? this.removePodcastEpisode : this.savePodcastEpisode}">
             ${this.isFavourite ? "Remove Favourite" : "Add Favourite"}
           </button>
           ${this.label}

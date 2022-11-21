@@ -27,6 +27,14 @@ class Component extends LitElement {
       sorting: { state: true },
       search: { state: true },
       image: { state: true },
+      key: { type: String },
+      
+      label: { type: String },
+      seasons: { type: Number },
+      description: { type: String},
+      genres: { type: [String] },
+      lastUpdated: { type: String },
+      sortKey: {type: String }
     };
   }
 
@@ -146,6 +154,7 @@ class Component extends LitElement {
         const day = date.getDate();
         const month = MONTHS[date.getMonth() - 1];
         const year = date.getFullYear();
+        const theGenres = genres;
 
         const clickHandler = () => store.loadSingle(id);
         // const clickHandler1 = () => store.loadSeasons(id);
@@ -167,6 +176,9 @@ class Component extends LitElement {
             <div class="card-content">
               <div class="card-meta">Updated: ${day} ${month} ${year}</div>
             </div>
+            <div class="card-content">
+            <div class="card-meta">Genres: ${theGenres}</div>
+          </div>
           </div>
         `;
       }
