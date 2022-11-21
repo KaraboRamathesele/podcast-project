@@ -52,7 +52,7 @@ class Component extends LitElement {
           />
         </div>
         <div>
-          ${episodes.map(({ file, title: innerTitle }) => {
+          ${episodes.map(({ id, title: innerTitle }) => {
             return html`
               <div>
                 <div>${innerTitle}</div>
@@ -69,7 +69,7 @@ class Component extends LitElement {
     return html`
       <button @click="${backHandler}">👈 BACK</button>
       <h1>${show.title || ""}</h1>
-      <div>${season}</div>
+      <div>${seasons}</div>
     `;
   }
 }
