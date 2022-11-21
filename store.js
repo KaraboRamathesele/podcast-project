@@ -152,7 +152,7 @@ class Store {
       previews: [],
       single: null,
       sorting: "a-z",
-      seasons: [],
+      seasons: null, //add seasons
     };
 
     this.loadList();
