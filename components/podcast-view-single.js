@@ -62,10 +62,7 @@ class Component extends LitElement {
               <div>
                 <div>${innerTitle}</div>
                 <audio controls>
-                  <source
-                    src="https://file-examples.com/storage/fe8c7eef0c6364f6c9504cc/2017/11/file_example_MP3_700KB.mp3"
-                    type="audio/mp3"
-                  />
+                  <source src="${file}" type="audio/mp3" />
                 </audio>
               </div>
             `;
