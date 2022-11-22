@@ -5,4 +5,3 @@ import "./components/podcast-controls.js";
 import "./components/podcast-seasons.js";
 
 // let showAPI = "https://podcast-api.netlify.app/shows";
-// let showData = await getData(showAPI);

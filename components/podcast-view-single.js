@@ -49,34 +49,34 @@ class Component extends LitElement {
       return html`<div></div>`;
     }
 
-    const backHandler = () => store.loadList();
+    //const backHandler = () => store.loadList();
 
-    const seasons = show.seasons.map(({ episodes, title }) => {
-      return html`
-        <div>
-          <strong>${title}</strong>
-          ${episodes.map(({ audio, title: innerTitle }) => {
-            return html`
-              <div>
-                <div>${innerTitle}</div>
-                <audio controls>
-                  <source src="${audio}" type="audio/mp3" />
-                </audio>
-                <button>Favorite ❤️</button>
-              </div>
-            `;
-          })}
-        </div>
-      `;
-    });
+    const seasons = show.seasons.map(({ episodes, title }) => {});
 
-    return html`
-      <button @click="${backHandler}" class="">👈 BACK</button>
-      <h1>${show.title || ""}</h1>
-      <img src="${show.image}" />
-      ${seasons}
-    `;
+    // return html`
+    //   <button @click="${backHandler}" class="">👈 BACK</button>
+    //   <h1>${show.title || ""}</h1>
+    //   <img src="${show.image}" />
+    //   ${seasons}
+    // `;
   }
 }
 
 customElements.define("podcast-view-single", Component);
+
+// return html`
+// <div>
+//   <strong>${title}</strong>
+//   ${episodes.map(({ audio, title: innerTitle }) => {
+//     return html`
+//       <div>
+//         <div>${innerTitle}</div>
+//         <audio controls>
+//           <source src="${audio}" type="audio/mp3" />
+//         </audio>
+//         <button>Favorite ❤️</button>
+//       </div>
+//     `;
+//   })}
+// </div>
+// `;

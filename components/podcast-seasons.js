@@ -37,8 +37,8 @@ class Component extends LitElement {
     const backHandler = () => store.loadList();
 
     const season = show.seasons.map(({ id, title, episodes, image }) => {
-      const clickHandler = () => store.loadSingle(id);
-      // const clickHandler = () => store.loadSeasons(id);
+      // const clickHandler = () => store.loadSingle(id);
+      const clickHandler = () => store.loadSeasons(id);
 
       return html`
         <div>
@@ -51,14 +51,17 @@ class Component extends LitElement {
           />
         </div>
         <div>
-          ${episodes.map(({ id, title: innerTitle }) => {
+          ${episodes.map(({ audio, title: innerTitle }) => {
             return html`
               <div>
                 <div>${innerTitle}</div>
                 <audio controls>
-                  <source src="${audio}" type="audio/mp3" />
+                  <source
+                    src="${audio}"
+                    type="audio/mp3"
+                  />
                 </audio>
-                <a>Favorite ❤️</a>
+                <a></a>Favorite ❤️</a>
               </div>
             `;
           })}
