@@ -146,7 +146,7 @@ class Component extends LitElement {
       throw new Error("Invalid sorting");
     });
 
-    // const backHandler = () => store.loadList()
+    const backHandler = () => store.loadList();
 
     const list = sortedPreviews.map(
       ({ title, id, updated, image, genres, seasons }) => {

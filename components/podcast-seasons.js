@@ -54,14 +54,12 @@ class Component extends LitElement {
           ${episodes.map(({ audio, title: innerTitle }) => {
             return html`
               <div>
-                <div>${innerTitle}</div>
+                <div style="margin-top: 15px;">${innerTitle}</div>
+                <br />
                 <audio controls>
-                  <source
-                    src="${audio}"
-                    type="audio/mp3"
-                  />
+                  <source src="${audio}" type="audio/mp3" />
                 </audio>
-                <a></a>Favorite ❤️</a>
+                <a>Favorite ❤️</a>
               </div>
             `;
           })}
@@ -72,6 +70,8 @@ class Component extends LitElement {
     return html`
       <button @click="${backHandler}">👈 BACK</button>
       <h1>${show.title || ""}</h1>
+      <p>${show.description}</p>
+      <hr />
       <div>${season}</div>
     `;
   }
