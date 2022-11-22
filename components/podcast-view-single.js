@@ -49,14 +49,13 @@ class Component extends LitElement {
       return html`<div></div>`;
     }
 
-    //const backHandler = () => store.loadList();
+    // const backHandler = () => store.loadList();
 
     const seasons = show.seasons.map(({ episodes, title }) => {});
 
     // return html`
     //   <button @click="${backHandler}" class="">👈 BACK</button>
-    //   <h1>${show.title || ""}</h1>
-    //   <img src="${show.image}" />
+
     //   ${seasons}
     // `;
   }
