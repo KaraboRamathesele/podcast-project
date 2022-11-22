@@ -165,15 +165,15 @@ class Component extends LitElement {
             <h2>${title}</h2>
             <button>
               <h3 @click="${clickHandler}">Seasons: ${seasons}</h3>
-              <figure class="card-banner">
-                <img
-                  src="${image}"
-                  width="400"
-                  height="400"
-                  @click="${clickHandler0}"
-                />
-              </figure>
             </button>
+            <figure class="card-banner">
+              <img
+                src="${image}"
+                width="400"
+                height="400"
+                @click="${clickHandler0}"
+              />
+            </figure>
             <div class="card-content">
               <div class="card-meta">Updated: ${day} ${month} ${year}</div>
             </div>

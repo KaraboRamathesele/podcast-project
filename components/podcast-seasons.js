@@ -36,7 +36,7 @@ class Component extends LitElement {
 
     const backHandler = () => store.loadList();
 
-    const season = show.seasons.map(({ title, episodes, image, id }) => {
+    const season = show.seasons.map(({ id, title, episodes, image }) => {
       const clickHandler = () => store.loadSingle(id);
       // const clickHandler = () => store.loadSeasons(id);
 
