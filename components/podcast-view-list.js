@@ -70,17 +70,16 @@ class Component extends LitElement {
       background-color: #0c003d;
     }
 
+    .hero-title {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
     li {
       border: 1px solid var(--primary-blue);
       list-style-type: none;
     }
 
-    .container {
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: center;
-      align-items: flex-start;
-    }
 
     .btn {
       appearance: none;
@@ -161,13 +160,18 @@ class Component extends LitElement {
         const clickHandler0 = () => store.loadSeasons(id);
 
         return html`
-          <div class="podcast-list">
+          <div class="podcast-list" style="margin-top: 5px;
+          margin-left: 30%;
+          margin-right: 30%;
+          max-width: 40%;
+          max-height: 40%;">
             <h2>${title}</h2>
             <button>
               <h3 @click="${clickHandler}">Seasons: ${seasons}</h3>
             </button>
             <figure class="card-banner">
               <img
+                style=""
                 src="${image}"
                 width="400"
                 height="400"
@@ -187,7 +191,7 @@ class Component extends LitElement {
 
     return html`
       <div class="hero-content">
-        <img src="./images/hero-title.png" alt="Podcast" class="hero-title" />
+        <img src="./images/hero-title.png" alt="Podcast" class="hero-title" style="width:50%;"/>
       </div>
       <podcast-controls></podcast-controls>
       <hr />

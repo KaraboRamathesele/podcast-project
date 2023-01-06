@@ -1,11 +1,3 @@
-/*-----------------------------------*\
-  #style.css
-\*-----------------------------------*/
-
-/**
- * copyright 2022 @codewithsadee
- */
-
 
 :root {
 --flourescent-blue: #00f9ef;
@@ -190,14 +182,9 @@ header .container {
 .navbar-actions .btn:is(:hover, :focus) { background: hsla(0, 0%, 100%, 0.1); }
 
 
-/* Heto */
+/* Hero */
 
 .hero { padding: 140px 0 var(--section-padding); }
-
-.hero-title {
-  width: 100%;
-  margin-bottom: 20px;
-}
 
 .hero .btn-primary { margin-bottom: 25px; }
 
@@ -239,8 +226,6 @@ header .container {
 /* Podcast */
 
 .podcast { padding: var(--section-padding) 0; }
-
-
 
 .podcast-card { border-radius: 4px; }
 

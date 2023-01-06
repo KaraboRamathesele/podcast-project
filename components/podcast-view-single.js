@@ -35,8 +35,8 @@ class Component extends LitElement {
       color: #00f9ef;
     }
     img {
-      width: 110px;
-      height: 100px;
+      width: 70px;
+      height: 70px;
     }
   `;
 
@@ -49,15 +49,15 @@ class Component extends LitElement {
       return html`<div></div>`;
     }
 
-    // const backHandler = () => store.loadList();
+    const backHandler = () => store.loadList();
 
     const seasons = show.seasons.map(({ episodes, title }) => {});
 
-    // return html`
-    //   <button @click="${backHandler}" class="">👈 BACK</button>
+    return html`
+      <button @click="${backHandler}" class="">👈 BACK</button>
 
-    //   ${seasons}
-    // `;
+       ${seasons}
+    `;
   }
 }
 
