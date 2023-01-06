@@ -18,11 +18,6 @@ class Component extends LitElement {
     this.disconnectStore = connect((state) => {
       if (this.single === state.single) return;
       this.single = state.single;
-      // if (this.seasons === state.seasons) return;
-      // this.seasons = state.seasons;
-      // if (this.previews !== state.previews) {
-      //   this.previews = state.previews;
-      // }
     });
   }
 
@@ -51,12 +46,37 @@ class Component extends LitElement {
 
     const backHandler = () => store.loadList();
 
-    const seasons = show.seasons.map(({ episodes, title }) => {});
+    const seasons = show.seasons.map(({ episodes, title }) => {
+      const seasonNumber = count(show.seasons);
+
+      return html`
+        <div>
+          <strong>${title}</strong>
+          ${episodes.map(({ file, title: innerTitle }) => {
+            return html`
+              <div>
+                <div>${innerTitle}</div>
+                <audio controls>
+                  <source
+                    src="https://file-examples.com/storage/fe8c7eef0c6364f6c9504cc/2017/11/file_example_MP3_700KB.mp3"
+                    type="audio/mp3"
+                  />
+                </audio>
+              </div>
+            `;
+          })}
+        </div>
+      `;
+    });
 
     return html`
-      <button @click="${backHandler}" class="">👈 BACK</button>
-
-       ${seasons}
+      <button @click="${backHandler}">&#8592; BACK</button>
+      <div class="float">
+        <img src="${show.image}" />
+        <p>${show.description}</p>
+      </div>
+      <hr />
+      ${seasons}
     `;
   }
 }
