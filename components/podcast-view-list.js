@@ -26,15 +26,6 @@ class Component extends LitElement {
       previews: { state: true },
       sorting: { state: true },
       search: { state: true },
-      // image: { state: true },
-      // key: { type: String },
-
-      // label: { type: String },
-      // seasons: { type: Number },
-      // description: { type: String },
-      // genres: { type: [String] },
-      // lastUpdated: { type: String },
-      // sortKey: { type: String },
     };
   }
 
@@ -52,9 +43,6 @@ class Component extends LitElement {
       if (this.search !== state.search) {
         this.search = state.search;
       }
-      // if (this.image !== state.image) {
-      //   this.image = state.image;
-      // }
     });
   }
 
@@ -65,18 +53,29 @@ class Component extends LitElement {
   //styling
   static styles = css`
     :host {
-      display: block;
       padding: 30px;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       background-color: #0c003d;
+    }
+
+    :root {
+      --transition: 0.25s ease-in-out;
+
+      --fs-1: 25px;
+      --fs-2: 18px;
+      --fs-3: 17px;
+      --fs-4: 15px;
     }
 
     .hero-title {
       width: 100%;
-      margin-bottom: 20px;
+      margin-top: 20px;
+      padding-left: 40px;
     }
 
     li {
-      border: 1px solid var(--primary-blue);
       list-style-type: none;
     }
 
@@ -114,9 +113,102 @@ class Component extends LitElement {
       transition-duration: 0.1s;
     }
 
+    .podcast {
+      padding: 30px 0;
+    }
+
+    //grid
+
     .podcast-list {
       display: grid;
       gap: 30px;
+    }
+
+    @media (min-width: 1200px) {
+      .podcast-list {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .podcast-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .podcast-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    //placement
+    .podcast-card {
+      border-radius: 4px;
+    }
+
+    .card-banner {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      z-index: 1;
+    }
+
+    .card-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    .podcast-card:is(:hover, :focus) .card-banner::before {
+      background: hsla(0, 0%, 100%, 0.1);
+    }
+
+    .card-banner img {
+      width: 260px;
+    }
+
+    .podcast-card:is(:hover, :focus) .card-banner-icon {
+      background: white;
+      color: #0052ff;
+    }
+
+    .card-meta {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      color: #aba6bd;
+      font-size: var(--fs-4);
+      margin-left: 35px;
+      margin-bottom: 15px;
+    }
+
+    .card-meta::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -35px;
+      transform: translateY(-2px);
+      width: 25px;
+      height: 2px;
+      background: var(--heliotrope-gray);
+    }
+
+    .podcast-card .card-title {
+      display: inline;
+      padding: 3px 0;
+      background: var(--gradient);
+      background-position: 0 95%;
+      background-repeat: no-repeat;
+      background-size: 0 2px;
+      transition: var(--transition);
+    }
+
+    .podcast-card:is(:hover, :focus) .card-title {
+      background-size: 100% 2px;
     }
   `;
 
@@ -144,8 +236,6 @@ class Component extends LitElement {
       throw new Error("Invalid sorting");
     });
 
-    const backHandler = () => store.loadList();
-
     const list = sortedPreviews.map(
       ({ title, id, updated, image, genres, seasons }) => {
         // image
@@ -156,36 +246,30 @@ class Component extends LitElement {
         const theGenres = genres;
 
         const clickHandler = () => store.loadSingle(id);
-        const clickHandler0 = () => store.loadSeasons(id);
+        //const clickHandler0 = () => store.loadSeasons(id);
 
         return html`
-          <div
-            class="podcast-list"
-            style="margin-top: 5px;
-          margin-left: 30%;
-          margin-right: 30%;
-          max-width: 40%;
-          max-height: 40%;"
-          >
-            <h2>${title}</h2>
-            <button>
-              <h3 @click="${clickHandler}">Seasons: ${seasons}</h3>
-            </button>
-            <figure class="card-banner">
-              <img
-                src="${image}"
-                width="400"
-                height="400"
-                @click="${clickHandler0}"
-              />
-            </figure>
-            <div class="card-content">
-              <div class="card-meta">Updated: ${day} ${month} ${year}</div>
-            </div>
-            <div class="card-content">
-              <div class="card-meta">Genres: ${theGenres}</div>
-            </div>
-          </div>
+          <section class="podcast">
+            <ul>
+              <li class="podcast-list">
+                <div @click="${clickHandler}" class="podcast-card">
+                  <figure class="card-banner">
+                    <img src="${image}" alt="" />
+                  </figure>
+
+                  <div class="card-content">
+                    <div class="card-meta">
+                      Updated: ${day} ${month} ${year}
+                    </div>
+                    <p class="pod-epi">Genres: ${theGenres}</p>
+
+                    <h3 class="h3 card-title">${title}</h3>
+                    <h3 @click="${clickHandler}">Seasons: ${seasons}</h3>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </section>
         `;
       }
     );
@@ -196,7 +280,7 @@ class Component extends LitElement {
           src="./images/hero-title.png"
           alt="Podcast"
           class="hero-title"
-          style="width:50%;"
+          style="width:40%; "
         />
       </div>
       <podcast-controls></podcast-controls>

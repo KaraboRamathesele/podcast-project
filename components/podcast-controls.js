@@ -76,12 +76,11 @@ class Component extends LitElement {
     return html`
       <div>
         <label>
-          <span class="search">Search</span>
+          <span>Search</span>
           <input @input="${inputHandler}" value="${this.search}" />
         </label>
-
         <label>
-          <span style="font-weight:bold;">Sorting</span>
+          Sorting
           <select @change="${changeHandler}">
             <option value="a-z" .selected="${this.sorting === "a-z"}">
               A - Z

@@ -20,7 +20,6 @@ class Store {
   }
 
   async loadList() {
-    // this loadlist back to the view ? MV-because of this ?C
     if (this.state.previews.length > 0) {
       return this.update({
         single: null,
@@ -68,33 +67,6 @@ class Store {
     return this.update({
       phase: "single",
       single: data,
-    });
-  }
-
-  //
-
-  /**
-   * @param {string} id
-   */
-  async loadSeasons(id) {
-    this.update({
-      phase: "loading",
-    });
-
-    if (!id) throw new Error('"id" is required');
-    const response = await fetch(`https://podcast-api.netlify.app/id/${id}`);
-
-    if (!response.ok) {
-      return this.update({
-        phase: "error",
-      });
-    }
-
-    const data = await response.json();
-
-    return this.update({
-      phase: "seasons", //change this from single --> seasons
-      seasons: data,
     });
   }
 
@@ -151,7 +123,6 @@ class Store {
       previews: [],
       single: null,
       sorting: "a-z",
-      seasons: null, //add seasons
     };
 
     this.loadList();

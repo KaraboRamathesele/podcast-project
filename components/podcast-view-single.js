@@ -9,6 +9,7 @@ class Component extends LitElement {
   static get properties() {
     return {
       single: { state: true },
+      file: { type: String },
     };
   }
 
@@ -47,8 +48,6 @@ class Component extends LitElement {
     const backHandler = () => store.loadList();
 
     const seasons = show.seasons.map(({ episodes, title }) => {
-      const seasonNumber = count(show.seasons);
-
       return html`
         <div>
           <strong>${title}</strong>
@@ -70,8 +69,9 @@ class Component extends LitElement {
     });
 
     return html`
-      <button @click="${backHandler}">&#8592; BACK</button>
-      <div class="float">
+      <button @click="${backHandler}">👈 BACK</button>
+      <h1>${show.title || ""}</h1>
+      <div>
         <img src="${show.image}" />
         <p>${show.description}</p>
       </div>
@@ -82,20 +82,3 @@ class Component extends LitElement {
 }
 
 customElements.define("podcast-view-single", Component);
-
-// return html`
-// <div>
-//   <strong>${title}</strong>
-//   ${episodes.map(({ audio, title: innerTitle }) => {
-//     return html`
-//       <div>
-//         <div>${innerTitle}</div>
-//         <audio controls>
-//           <source src="${audio}" type="audio/mp3" />
-//         </audio>
-//         <button>Favorite ❤️</button>
-//       </div>
-//     `;
-//   })}
-// </div>
-// `;
