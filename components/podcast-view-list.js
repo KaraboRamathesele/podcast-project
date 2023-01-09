@@ -107,14 +107,8 @@ class Component extends LitElement {
       word-wrap: break-word;
     }
 
-    .btn:hover {
-      background-color: #f3f4f6;
-      text-decoration: none;
-      transition-duration: 0.1s;
-    }
-
     .podcast {
-      padding: 30px 0;
+      padding: 20px 0;
     }
 
     //grid
@@ -194,7 +188,7 @@ class Component extends LitElement {
       transform: translateY(-2px);
       width: 25px;
       height: 2px;
-      background: var(--heliotrope-gray);
+      background: #aba6bd;
     }
 
     .podcast-card .card-title {
@@ -208,7 +202,7 @@ class Component extends LitElement {
     }
 
     .podcast-card:is(:hover, :focus) .card-title {
-      background-size: 100% 2px;
+      background-size: 20% 2px;
     }
   `;
 
@@ -252,9 +246,9 @@ class Component extends LitElement {
           <section class="podcast">
             <ul>
               <li class="podcast-list">
-                <div @click="${clickHandler}" class="podcast-card">
-                  <figure class="card-banner">
-                    <img src="${image}" alt="" />
+                <div @click="${clickHandler}">
+                  <figure class="card-banner ">
+                    <img src="${image}" alt="" class="podcast-card" />
                   </figure>
 
                   <div class="card-content">
